@@ -1,0 +1,4 @@
+2: stuff1, thread1: shutdown = 1
+4: thread3: lock(napi_poll)
+!4: stuff3, rtl8169_poll, thread3: assert((shutdown) == (0))
+l2: thread1: lock(napi_poll)

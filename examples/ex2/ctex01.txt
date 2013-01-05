@@ -1,0 +1,4 @@
+2: register_netdev, thread1: up(init_sem)
+3: thread2: down(init_sem)
+!3: rtl8169_open, thread2: *(hw_start)()
+2: thread1: hw_start = &(start_device)

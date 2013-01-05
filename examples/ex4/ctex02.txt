@@ -1,0 +1,5 @@
+2: thread1: lock(dev_lock)
+2: thread1: stuff1()
+3: thread2_ns: lock(sysfs_lock)
+!3: thread2_ns: lock(dev_lock)
+l2: thread1: usb_remove_sysfs_dev_files()

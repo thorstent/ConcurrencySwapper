@@ -1,0 +1,79 @@
+Processing file ex1.c
+Starting iteration 1... Done. (Ctex length: 5 lines) (Poirot Time: 3.67s)
+Starting iteration 2... Done. (Poirot Time: 3.555s)
+Fixed one bug in iteration 2
+Starting deadlock analysis
+Starting iteration 3... Done. (Poirot Time: 3.447s)
+Wrote correct program to ex1-corrected.c
+(Iterations: 3, Time : 11.07,s, Percent in Poirot: 96.40469738030714%)
+
+
+
+Processing file ex2.c
+Starting iteration 1... Done. (Ctex length: 4 lines) (Poirot Time: 2.992s)
+Starting iteration 2... Done. (Poirot Time: 3.175s)
+Fixed one bug in iteration 2
+Starting deadlock analysis
+Starting iteration 3... Done. (Poirot Time: 3.426s)
+Wrote correct program to ex2-corrected.c
+(Iterations: 3, Time : 9.673,s, Percent in Poirot: 99.17295564974673%)
+
+
+
+Processing file ex3.c
+Starting iteration 1... Done. (Ctex length: 4 lines) (Poirot Time: 2.878s)
+Starting iteration 2... Done. (Poirot Time: 3.516s)
+Fixed one bug in iteration 2
+Starting deadlock analysis
+Starting iteration 3... Done. (Poirot Time: 3.579s)
+Wrote correct program to ex3-corrected.c
+(Iterations: 3, Time : 10.059,s, Percent in Poirot: 99.14504423898998%)
+
+
+
+Processing file ex4.c
+Starting iteration 1... Done. (Poirot Time: 2.341s)
+Starting deadlock analysis
+Starting iteration 2... Done. (Ctex length: 5 lines) (Poirot Time: 4.561s)
+Starting iteration 3... Done. (Ctex length: 4 lines) (Poirot Time: 4.625s)
+Starting iteration 4... Done. (Poirot Time: 4.481s)
+Fixed one bug in iteration 4
+Wrote correct program to ex4-corrected.c
+(Iterations: 4, Time : 16.129,s, Percent in Poirot: 99.249798499597%)
+
+
+
+Processing file ex5.c
+Starting iteration 1... Done. (Ctex length: 12 lines) (Poirot Time: 3.687s)
+Starting iteration 2... Done. (Dead End) (Poirot Time: 3.064s)
+Starting iteration 3... Done. (Ctex length: 13 lines) (Poirot Time: 3.634s)
+Starting iteration 4... Done. (Poirot Time: 3.702s)
+Fixed one bug in iteration 4
+Starting deadlock analysis
+Starting iteration 5... Done. (Poirot Time: 3.752s)
+Wrote correct program to ex5-corrected.c
+(Iterations: 5, Time : 18.026,s, Percent in Poirot: 98.96260956396316%)
+
+
+
+Processing file ex_driver.c
+Starting iteration 1... Done. (Ctex length: 21 lines) (Poirot Time: 8.98s)
+Starting iteration 2... Done. (Ctex length: 91 lines) (Poirot Time: 26.085s)
+Fixed one bug in iteration 2
+Starting iteration 3... Done. (Ctex length: 90 lines) (Poirot Time: 26.194s)
+Starting iteration 4... Done. (Ctex length: 90 lines) (Poirot Time: 25.275s)
+Starting iteration 5... Done. (Ctex length: 91 lines) (Poirot Time: 25.585s)
+Starting iteration 6... Done. (Ctex length: 58 lines) (Poirot Time: 106.947s)
+Fixed one bug in iteration 6
+Starting iteration 7... Done. (Ctex length: 101 lines) (Poirot Time: 108.358s)
+Fixed one bug in iteration 7
+Starting iteration 8... Done. (Poirot Time: 206.101s)
+Fixed one bug in iteration 8
+Starting deadlock analysis
+Starting iteration 9... Done. (Ctex length: 24 lines) (Poirot Time: 27.445s)
+Starting iteration 10... Done. (Ctex length: 24 lines) (Poirot Time: 24.501s)
+Starting iteration 11... Done. (Poirot Time: 2004.647s)
+Fixed one bug in iteration 11
+Wrote correct program to ex_driver-corrected.c
+(Iterations: 11, Time : 2612.356,s, Percent in Poirot: 99.14873776774681%)
+

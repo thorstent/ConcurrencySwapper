@@ -1,0 +1,5 @@
+3: thread2: IntrMask = 1
+2: thread1: assume (!((intr_mask) == (1)))
+2: thread1: handled = 0
+!2: thread1: assert((handled) == (1))
+3: thread2: intr_mask = 1

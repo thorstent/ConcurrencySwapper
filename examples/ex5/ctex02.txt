@@ -1,0 +1,13 @@
+2: i2c_hid_open, thread_open: assume ((open) == (0))
+2: i2c_hid_open, thread_open: power_on = 1
+2: i2c_hid_open, thread_open: assert((power_on) != (0))
+2: i2c_hid_open, thread_open: open = (open) + (1)
+2: i2c_hid_open, thread_open: assume (!((open) == (0)))
+3: thread_close: assume((open) > (0))
+3: i2c_hid_close, thread_close: open = (open) - (1)
+3: i2c_hid_close, thread_close: assume ((open) == (0))
+3: i2c_hid_close, thread_close: power_on = 0
+!2: i2c_hid_open, thread_open: assert((power_on) != (0))
+3: i2c_hid_close, thread_close: assert((power_on) == (0))
+l2: i2c_hid_open, thread_open: open = (open) + (1)
+l2: i2c_hid_open, thread_open: open = (open) + (1)

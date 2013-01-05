@@ -1,0 +1,101 @@
+2: pci_thread: int probe
+2: drv_probe, pci_thread: int rc
+2: drv_probe, pci_thread: hw_start = drv_hw_start
+2: create_sysfs_files, drv_probe, pci_thread: lock(sysfs_lock)
+2: device_create_bin_file, create_sysfs_files, drv_probe, pci_thread: sysfs_registered = 1
+2: create_sysfs_files, drv_probe, pci_thread: unlock(sysfs_lock)
+2: register_netdev, drv_probe, pci_thread: int nondet
+2: register_netdev, drv_probe, pci_thread: nondet = poirot_nondet()
+2: register_netdev, drv_probe, pci_thread: registered = 1
+2: register_netdev, drv_probe, pci_thread: return (0)
+3: network_thread: int open1
+3: network_thread: int nondet
+3: open, network_thread: int ret = 0
+3: open, network_thread: lock(rtnl_lock)
+3: open, network_thread: assume ((registered) != (0))
+3: drv_open, open, network_thread: int rc
+3: drv_open, open, network_thread: *(hw_start)()
+3: drv_open, open, network_thread: IntrMask = 0
+3: request_irq, drv_open, open, network_thread: int nondet
+3: request_irq, drv_open, open, network_thread: nondet = poirot_nondet()
+3: request_irq, drv_open, open, network_thread: return (-(1))
+3: drv_open, open, network_thread: assume ((rc) < (0))
+3: drv_open, open, network_thread: return (rc)
+3: open, network_thread: assume (!((ret) == (0)))
+3: open, network_thread: unlock(rtnl_lock)
+3: open, network_thread: return (ret)
+3: network_thread: assume (!(!(open1)))
+3: open, network_thread: int ret = 0
+3: open, network_thread: lock(rtnl_lock)
+3: open, network_thread: assume ((registered) != (0))
+3: drv_open, open, network_thread: int rc
+3: drv_open, open, network_thread: *(hw_start)()
+3: drv_open, open, network_thread: IntrMask = 0
+3: request_irq, drv_open, open, network_thread: int nondet
+3: request_irq, drv_open, open, network_thread: nondet = poirot_nondet()
+3: request_irq, drv_open, open, network_thread: irq_enabled = 1
+3: request_irq, drv_open, open, network_thread: return (0)
+3: drv_open, open, network_thread: assume (!((rc) < (0)))
+3: napi_enable, drv_open, open, network_thread: napi_enabled = 1
+3: dev_up, drv_open, open, network_thread: dev_on = 1
+3: dev_up, drv_open, open, network_thread: intr_mask = 1
+3: write_IntrMask, dev_up, drv_open, open, network_thread: assert((dev_on) != (0))
+3: write_IntrMask, dev_up, drv_open, open, network_thread: IntrMask = val
+3: drv_open, open, network_thread: return (0)
+4: irq_thread: int handled
+4: irq_thread: down(irq_sem)
+4: irq_thread: assume ((((irq_enabled) != (0)) && ((IntrStatus) != (0))) && ((IntrMask) != (0)))
+4: drv_irq, irq_thread: u8 status
+4: drv_irq, irq_thread: int handled = 0
+4: drv_irq, irq_thread: status = IntrStatus
+4: drv_irq, irq_thread: assume ((intr_mask) != (0))
+4: write_IntrMask, drv_irq, irq_thread: assert((dev_on) != (0))
+4: write_IntrMask, drv_irq, irq_thread: IntrMask = val
+4: drv_irq, irq_thread: intr_mask = 0
+4: napi_schedule, drv_irq, irq_thread: atomicStart()
+4: napi_schedule, drv_irq, irq_thread: assume ((napi_enabled) != (0))
+4: napi_schedule, drv_irq, irq_thread: napi_scheduled = 1
+4: napi_schedule, drv_irq, irq_thread: atomicEnd()
+4: drv_irq, irq_thread: handled = 1
+4: write_IntrStatus, drv_irq, irq_thread: assert((dev_on) != (0))
+4: write_IntrStatus, drv_irq, irq_thread: IntrStatus = (IntrStatus) & (~(val))
+4: drv_irq, irq_thread: status = IntrStatus
+4: drv_irq, irq_thread: return (handled)
+4: irq_thread: assert((handled) != (0))
+4: irq_thread: up(irq_sem)
+5: napi_thread: bool flag
+5: napi_thread: down(napi_sem)
+5: drv_napi_poll, napi_thread: int work_done
+5: handle_interrupt, drv_napi_poll, napi_thread: int nondet
+5: handle_interrupt, drv_napi_poll, napi_thread: nondet = poirot_nondet()
+5: handle_interrupt, drv_napi_poll, napi_thread: IntrStatus = 0
+5: handle_interrupt, drv_napi_poll, napi_thread: return (nondet)
+5: drv_napi_poll, napi_thread: assume ((work_done) < (100))
+5: napi_complete, drv_napi_poll, napi_thread: napi_scheduled = 0
+5: write_IntrMask, drv_napi_poll, napi_thread: assert((dev_on) != (0))
+5: write_IntrMask, drv_napi_poll, napi_thread: IntrMask = val
+6: workqueue_thread: assume (!(reset_task_ready))
+7: sysfs_thread: int nondet
+8: dev_thread: IntrStatus = 1
+4: irq_thread: down(irq_sem)
+4: irq_thread: assume ((((irq_enabled) != (0)) && ((IntrStatus) != (0))) && ((IntrMask) != (0)))
+4: drv_irq, irq_thread: u8 status
+4: drv_irq, irq_thread: int handled = 0
+4: drv_irq, irq_thread: status = IntrStatus
+4: drv_irq, irq_thread: assume (!((intr_mask) != (0)))
+4: write_IntrStatus, drv_irq, irq_thread: assert((dev_on) != (0))
+4: write_IntrStatus, drv_irq, irq_thread: IntrStatus = (IntrStatus) & (~(val))
+4: drv_irq, irq_thread: status = IntrStatus
+4: drv_irq, irq_thread: return (handled)
+!4: irq_thread: assert((handled) != (0))
+5: drv_napi_poll, napi_thread: intr_mask = 255
+5: napi_thread: up(napi_sem)
+7: sysfs_thread: lock(sysfs_lock)
+7: sysfs_thread: lock(dev_lock)
+7: sysfs_thread: assume ((sysfs_registered) != (0))
+7: sysfs_thread: nondet = poirot_nondet()
+7: drv_sysfs_read, sysfs_thread: int nondet
+7: drv_sysfs_read, sysfs_thread: nondet = poirot_nondet()
+7: drv_sysfs_read, sysfs_thread: return (nondet)
+7: sysfs_thread: unlock(dev_lock)
+7: sysfs_thread: unlock(sysfs_lock)

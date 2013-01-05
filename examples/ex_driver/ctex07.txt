@@ -1,0 +1,24 @@
+2: pci_thread: int probe
+2: drv_probe, pci_thread: int rc
+2: drv_probe, pci_thread: hw_start = drv_hw_start
+2: create_sysfs_files, drv_probe, pci_thread: lock(sysfs_lock)
+2: device_create_bin_file, create_sysfs_files, drv_probe, pci_thread: sysfs_registered = 1
+2: create_sysfs_files, drv_probe, pci_thread: unlock(sysfs_lock)
+2: register_netdev, drv_probe, pci_thread: int nondet
+2: register_netdev, drv_probe, pci_thread: nondet = poirot_nondet()
+2: register_netdev, drv_probe, pci_thread: registered = 1
+2: register_netdev, drv_probe, pci_thread: return (0)
+2: drv_probe, pci_thread: assume (!((rc) < (0)))
+2: drv_probe, pci_thread: return (0)
+2: pci_thread: assume (!(probe))
+3: network_thread: int open1
+3: network_thread: int nondet
+4: irq_thread: int handled
+5: napi_thread: bool flag
+7: sysfs_thread: int nondet
+7: sysfs_thread: lock(sysfs_lock)
+2: pci_thread: lock(dev_lock)
+!7: sysfs_thread: lock(dev_lock)
+l2: pci_thread: drv_disconnect()
+l7: sysfs_thread: lock(dev_lock)
+l2: pci_thread: drv_disconnect()

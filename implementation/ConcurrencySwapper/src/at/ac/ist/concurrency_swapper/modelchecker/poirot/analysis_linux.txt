@@ -1,0 +1,8 @@
+
+pushd C:
+call fixvars.cmd
+pushd ConcurrencySleuth
+call setup.cmd
+popd
+popd
+call Poirot4C /recursionBound:2
